@@ -1,6 +1,5 @@
-package hw2;
+package team;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Student {
@@ -8,7 +7,7 @@ public class Student {
 	String name;
 	String phone;
 	int year;
-	int score;
+	Team myTeam;
 	
 	Student(int id2) {
 		id = id2;
@@ -23,9 +22,12 @@ public class Student {
 	
 	void print() {
 		System.out.printf("%d %s %s %d학년", id, name, phone, year);
-		if (score > 0)
-			System.out.printf(" [%d점]", score);
+		if (myTeam != null)
+			System.out.printf(" [%s팀]", myTeam.name);
 		System.out.println();
+	}
+	void setTeam(Team t) {
+		myTeam = t;
 	}
 
 	boolean matches(String kwd) {  
@@ -49,11 +51,5 @@ public class Student {
 		}
 		return true;
 	}
-	
-	static Random rand = new Random();
-	public void inputScore() {
-		score = rand.nextInt(100) + 1; //Math.randint
-		System.out.printf("이름: %s (점수: %d)\n", name, score);
-	}
-
 }
+
